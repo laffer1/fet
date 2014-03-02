@@ -2992,7 +2992,7 @@ void				CG_PositionRotatedEntityOnTag
 						const refEntity_t	*parent,
 						const char			*tagName
 					);
-void				CG_Portal ( centity_t *cent );
+static void				CG_Portal ( centity_t *cent );
 
 //
 // cg_weapons.c
@@ -4385,7 +4385,7 @@ qboolean		CG_TagValid ( refEntity_t refent, char *tagname );
 float			*CG_GetTagOrigin ( refEntity_t refent, char *tagname, vec3_t *offset );
 
 // q_math.c
-float			round ( float v );
+//float			round ( float v );
 #ifdef __BOT__
 void			CG_ScorePlum ( int client, vec3_t org, int score, int type, qboolean big, int displayIcon );
 void			CG_GoalNode ( int client, vec3_t org, int score );

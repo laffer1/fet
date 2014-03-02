@@ -1741,5 +1741,5 @@ enum
 	TAG_UNHOOK						= 999,
 };
 #endif //TAG_TYPES_INITIALIZED
-float round ( float v );
+//float round ( float v );
 int random_int ( int low, int high );

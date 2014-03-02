@@ -3338,6 +3338,7 @@ anglemod ( float a )
 round
 ===============
 */
+/*
 float
 round ( float v )
 {
@@ -3350,3 +3351,4 @@ round ( float v )
 		return ( floor( v) );
 	}
 }
+*/
