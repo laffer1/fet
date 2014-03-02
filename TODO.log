@@ -1,0 +1,156 @@
+= FET 0.5.0 RC 1 =
+
+== Bots: ==
+X Find revision which messed up bot code.
+X Modify that and following revisions to allow fixes without lag
+X Check bot code with respect to player counts. Spectators are currently
+	counted as active players, limbo'd ones aren't.
+X /addbot command should be disabled when bot_dynamic is on. Plus it needs
+	better default parameters
+X Make bots balance teams. In rare cases, there are more bots on one team then
+	the other.
+	(# They will smoothly get out of the way if a human player would
+	unbalance teams or would get a "team full" warning)
+X Check bot class selection. Lots of cov'opses to be seen lately.
+	(# Uses better ratio's now, takes human players into account too.)
+? Check dispenser bots. Field ops and medic work buggy: they go in a never
+	ending weapon switch or dispense till killed.
+- Reduce bot spamming, medics are constantly yelling for ammo.
+	(Poor bastards...)
+- Bot chat can be heared by everyone from time to time...
+X Bot names are not chosen relative to their team in case of auto-bots, all
+	American names are used.
+X Look at waypointing code, remove unnecessary debug info if present
+	( Some stuff like "All nodes parsed in x seconds" can now be toggled on
+		with bot_debug set. See bot_debug_value_t in g_local.h)
+X Issue a warning once before starting the autowaypoint process.
+X Make bots pick things up. Currently, med-/ammopacks fly straight trough them.
+	(# Caused by g_noautopickups...)
+X /kick allbots kicks nearly all bots, not all if there are more than 4.
+? Certain team-only chats from bots get played globally. ( Could be due to a
+	server setting where refs see all chat.)
+T Bots can use func_invisible_user entities but do not seem to push buttons.
+	(# On a closer look, bots do use buttons but need to be in front of
+		them.)
+X Make special bot cvars cheat protected.
+	(# bot_node_edit, bot_node_edit_tankonly, bot_debug )
+- When playing against bots only, the end screen just disapears instantly
+	because all botes set themselves "ready".
+
+== Tweaks, general ==
+S FIX THE DARN MEMORY LEAK
+	(# Memory usage is now somewhat stable after binary reloads, though
+		bots/players keep allocating memory at a steady pace of 4 KB/s)
+? Tank bounding boxes are off compared to the model.
+	(# When driving, they act strange so tanks pass where they shouldn't
+		and when parked the bounding box stands perpendicular on the
+		model's direction.)
+S Tanks should turn slower (Seems quite ok though, Jaquboss modified them)
+? Tanks should be able to kill players by driving over them
+? Make tanks vulnerable to water. ( Make them float though when they have an
+	"amphibious" spawnflag set. Hehehe... And yes, those existed.)
+X Make weapon tweaking CVars cheatonly
+? Make a few CTF and/or Suppremacy maps to showcase the gameplay
+X Shift gametypes around so Suppremacy does not change CTF or TDM gametype
+	numbers when it's not included in build.
+? Make tanks have a "standby" mode and an "off" mode
+? Make a FalckonET editor (like the sound editor) to place bot waypoints and
+	DM/TDM spawns. (Or maybe not. It would work by hand,)
+X New helmets get thrown when a helmet pops. However, the player keeps his
+	original helmet on.
+	(# This was due to anti-lag code. Fixed by turning
+	off larger parts of anti-lag code by means of the g_antilag CVar)
+? Spectators which are in "free-float" mode regularly spawn at the
+	info_intermission after aprox 10 secs.
+	(# Messed up bot code? Seems to be related to the number of bots and,
+		in a certain way, with kick allbots.)
+? G_GetWeaponSpread: It does get at the bottom in some rare cases (Seems to be
+	with scoped weapons combined with no default case...)
+- Fireteams can be created during warmup but vapourize when hitting normal play
+X Using +attack2 to kick players kills them instantly. I've never seen such a
+	mighty foot. (@ #define KICK_DAMAGE )
+	(# Fixed, the "weapon" code did not divide g_damage_multi by 100.
+		"The foot" now gives 15 HP with default damage settings)
+X Players get massive amounts of XP by standing on a medpack they shouldn't be
+	able to pick up.
+	(# Correction: no problems with medics, but other classes who received the
+		medpack "launcher" trough a cheat.)
+X Medics do not get XP for healing another medic.
+	( Thanks to Dreadnought for this one)
+? Make default height jump customisable trough a CVar.
+	(# Better: make it toggle-able)
+X Some "cvar" scriptactions are broken.
+	(# "inc" allways increases with 1, "set" doesn't work)
+X Trying to spawn in a non-DM map would crash the server by the means of a
+	null-pointer exception.
+	(# Now it dies with an explicit error. Not much better, but at least
+		you know why it died)
+
+== Tweaks, UI ==
+X Fix FalckonET menu -> Player head. Should be None / 3D view / Health (B/W) / 
+	Health (Colour) / Stamina (Colour)
+X Add +attack2 bind to FalckonET menu
+- Add new gametypes to host and ref menus.
+S New commands do not auto-complete
+	(# We might still need new commands, so this is only partially done)
+
+== Tweaks, Graphics ==
+? Fix Thompson's UV wrapping at the back.
+? Change Thompson's ironsight to real one
+- Retrofit original W:ET skins to FET. (Thompson, Garand, maybe MP40)
+
+== Tweaks, Sounds ==
+? Change ammopack drop sound, currently too similar to weapon drop
+X Cut jitter from MP40's far sounds. These cause small "clicks" when played.
+X Cut jitter from shove sound
+- fix looping of the "dead" sound.
+
+== Gameplay tweaks, client ==
+X Kicking a func_door_rotating which can be opened by your team/class results
+	in a server crash.
+X Make thirdperson mode spectator only
+X Change g_thirdperson CVar so it reflects speclock, or disables thirdperson
+	completely. 
+	(# g_thirdperson <= -1 disables thirdperson spectating, anything else
+		makes it depends on speclock.)
+S Fix Internet radio, Jaquboss disabled it. (Using SDL or not)
+	(# Ok, not really started, it's actually completely left out of the
+		compile)
+? When g_allonmap is on, show players on command map when playing as a
+	spectator
+
+== Gameplay tweaks, server things ==
+? Fix kill logs, MOD_ messages are messed up. (Killing someone from the tank is
+	reported as MOD_MG42, tankshell kills as MOD_SWITCHTEAM and killing
+	someone with a STG44 reports as MOD_BAR)
+S Add qsay, bp, cp support for ETAdmin
+	(# "qsay" and "cp" are there. No bp though, couldn't be bothered to
+		write a complete banner print.)
+? Banner system 
+	(# Will needs "bp" client command, and some server code rotating the
+		banners)
+? Add a warning command for refs
+	(# It's there, but not in the GUI)
+? Refs should be able to cancel votes
+X Remove complaints for teamkills due to mines
+	(# Ok, this a thing fixed in ETMain... See g_disableComplaints bitflags,
+		1=mines, 2=airstrike/ffe, 4=mortar. "1" is now the default)
+X Spectators spawn at an info_player_intermission with the spawnflags set,
+	instead of an info_player_intermission with no spawnflags
+	(# Was an issue because Jaquboss used info_player_deathmatch as the new
+		spectator spawning point. Reverted and cleaned up to old standard.)
+- Remove g_PopHelmets CVar
+T The player respawns when he reaches soldier level 4
+	(# Disappeared for now, needs more testing.)
+
+
+= Symbol list =
+'-' Awaiting fix
+'?' Not sure if it should get fixed, or if there's the time for it
+'S' Work started, but not visible in the build
+'T' Testing and/or further development required
+'X' Fixed, and tested
+'B' Was supposed to be fixed, bugged
+
+'(@ )' See certain code
+'(# )' More info on the problem or fix
