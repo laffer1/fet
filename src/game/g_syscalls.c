@@ -35,10 +35,8 @@
 // this file is only included when building a dll
 // g_syscalls.asm is included instead when building a qvm
 static int ( QDECL *syscall ) (int arg, ...) = ( int(QDECL *) (int, ...) ) - 1;
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export on
-#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
 #endif
 
 /* */
@@ -48,10 +46,8 @@ dllEntry ( int (QDECL *syscallptr) (int arg, ...) )
 	syscall = syscallptr;
 }
 
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export off
-#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
 #endif
 
 /* */

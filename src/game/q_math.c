@@ -3338,9 +3338,8 @@ anglemod ( float a )
 round
 ===============
 */
-/*
 float
-round ( float v )
+round_wtf ( float v )
 {
 	if ( v >= 0.5f )
 	{
@@ -3351,4 +3350,3 @@ round ( float v )
 		return ( floor( v) );
 	}
 }
-*/

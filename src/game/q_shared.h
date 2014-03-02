@@ -36,15 +36,17 @@
 // A user mod should never modify this file
 //#define PRE_RELEASE_DEMO
 #ifndef PRE_RELEASE_DEMO
-#define Q3_VERSION	"ET 2.60"
+#define Q3_VERSION	"ET 2.60c"
 #else
 #define Q3_VERSION	"ET 2.32"
 #endif // PRE_RELEASE_DEMO
 
+// 2.60c: Mac OSX universal binaries
+// 2.60b: CVE-2006-2082 fix
 // 2.6x: Enemy Territory - ETPro team maintenance release
 // 2.5x: Enemy Territory FINAL
-// 2.4x: Enemey Territory RC's
-// 2.3x: Enemey Territory TEST
+// 2.4x: Enemy Territory RC's
+// 2.3x: Enemy Territory TEST
 // 2.2+: post SP removal
 // 2.1+: post Enemy Territory moved standalone
 // 2.x: post Enemy Territory
@@ -117,13 +119,9 @@
 #include <sys/stat.h>				// rain
 #include <float.h>
 #endif
-#ifdef _WIN32
 
-//#pragma intrinsic( memset, memcpy )
-#endif
-
-// this is the define for determining if we have an asm version of a C function
-#if ( defined _M_IX86 || defined __i386__ ) && !defined __sun__ && !defined __LCC__
+// use MSVC inline asm version of C functions
+#if defined _M_IX86
 #define id386	1
 #else
 #define id386	0
@@ -165,6 +163,9 @@
 
 //======================= MAC OS X SERVER DEFINES =====================
 #if defined( MACOS_X )
+
+#error WTF
+
 #define MAC_STATIC
 #define CPUSTRING	"MacOS_X"
 #define PATH_SEP	'/'
@@ -217,7 +218,7 @@ idSqrt ( float x )
 //======================= MAC DEFINES =================================
 #ifdef __MACOS__
 #define MAC_STATIC
-#define CPUSTRING	"MacOS-PPC"
+#define CPUSTRING	"OSX-universal"
 #define PATH_SEP	'/'
 void	Sys_PumpEvents ( void );
 #endif
@@ -741,6 +742,7 @@ float			Com_Clamp ( float min, float max, float value );
 char			*COM_SkipPath ( char *pathname );
 void			COM_FixPath ( char *pathname );
 void			COM_StripExtension ( const char *in, char *out );
+void   			COM_StripExtension2( const char *in, char *out, int destsize );
 void			COM_StripFilename ( char *in, char *out );
 void			COM_DefaultExtension ( char *path, int maxSize, const char *extension );
 void			COM_BeginParseSession ( const char *name );
@@ -1741,5 +1743,5 @@ enum
 	TAG_UNHOOK						= 999,
 };
 #endif //TAG_TYPES_INITIALIZED
-//float round ( float v );
+float round_wtf ( float v );
 int random_int ( int low, int high );

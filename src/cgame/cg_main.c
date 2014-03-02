@@ -83,10 +83,8 @@ This is the only way control passes into the module.
 This must be the very first function compiled into the .q3vm file
 ================
 */
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export on
-#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
 #endif
 
 /* */
@@ -108,10 +106,8 @@ vmMain
 	int arg11
 )
 {
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export off
-#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
 #endif
 #ifdef __MUSIC_ENGINE__
 	if ( command != CG_INIT && command != CG_SHUTDOWN )

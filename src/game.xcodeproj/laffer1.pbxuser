@@ -1,0 +1,84 @@
+// !$*UTF8*$!
+{
+	39C1F1AA0B7FC4140085E2FD /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	39C1F1AB0B7FC4140085E2FD /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	39C1F28E0B7FE7B50085E2FD /* g_sp_script_actions.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 21210}}";
+			sepNavSelRange = "{8391, 28}";
+			sepNavVisRect = "{{0, 3859}, {734, 180}}";
+		};
+	};
+	508817C409F0C9740071BF1A /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeTarget = 508817D309F0C9AD0071BF1A /* game */;
+		addToTargets = (
+			508817D309F0C9AD0071BF1A /* game */,
+		);
+		codeSenseManager = 39C1F1AB0B7FC4140085E2FD /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 192931652;
+			PBXWorkspaceStateSaveDate = 192931652;
+		};
+		sourceControlManager = 39C1F1AA0B7FC4140085E2FD /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	508817D309F0C9AD0071BF1A /* game */ = {
+		activeExec = 0;
+	};
+	B72E632E0B47155A0006C962 /* g_script.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1202, 27650}}";
+			sepNavSelRange = "{41823, 28}";
+			sepNavVisRect = "{{0, 17403}, {734, 180}}";
+		};
+	};
+	B72E63300B47155A0006C962 /* g_spawn.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {746, 21210}}";
+			sepNavSelRange = "{29878, 28}";
+			sepNavVisRect = "{{0, 11705}, {734, 180}}";
+		};
+	};
+	B72E633D0B47155A0006C962 /* q_math.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {944, 46942}}";
+			sepNavSelRange = "{74857, 0}";
+			sepNavVisRect = "{{0, 46325}, {654, 617}}";
+			sepNavWindowFrame = "{{19, -5}, {699, 746}}";
+		};
+	};
+}

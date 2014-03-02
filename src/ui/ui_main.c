@@ -275,11 +275,10 @@ void				_UI_MouseEvent ( int dx, int dy );
 void				_UI_Refresh ( int realtime );
 qboolean			_UI_IsFullscreen ( void );
 int					last_gametype = 0;
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export on
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
 #endif
-#endif
+
 
 /* */
 int
@@ -300,10 +299,8 @@ vmMain
 	int arg11
 )
 {
-#if defined( __MACOS__ )
-#ifndef __GNUC__
-#pragma export off
-#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
 #endif
 #ifdef __SUPREMACY__
 	if ( ui_netGameType.integer != last_gametype )

@@ -131,6 +131,23 @@ COM_StripExtension ( const char *in, char *out )
 }
 
 
+/*
+============
+COM_StripExtension2
+a safer version
+============
+*/
+void 
+COM_StripExtension2( const char *in, char *out, int destsize ) {
+  int len = 0;
+  while ( len < destsize - 1 && *in && *in != '.' ) {
+    *out++ = *in++;
+    len++;
+  }
+  *out = 0;
+}
+
+
 /* */
 void
 COM_StripFilename ( char *in, char *out )

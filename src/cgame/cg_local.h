@@ -4385,7 +4385,7 @@ qboolean		CG_TagValid ( refEntity_t refent, char *tagname );
 float			*CG_GetTagOrigin ( refEntity_t refent, char *tagname, vec3_t *offset );
 
 // q_math.c
-//float			round ( float v );
+float			round_wtf ( float v );
 #ifdef __BOT__
 void			CG_ScorePlum ( int client, vec3_t org, int score, int type, qboolean big, int displayIcon );
 void			CG_GoalNode ( int client, vec3_t org, int score );

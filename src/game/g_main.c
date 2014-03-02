@@ -948,17 +948,15 @@ int next_NPC_check;
 extern int next_plane_time;
 #endif
 
-#if defined(__MACOS__)
-#ifndef __GNUC__
-#pragma export on
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
 #endif
-#endif
+
 int vmMain( int command, int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6 ) {
-#if defined(__MACOS__)
-#ifndef __GNUC__
-#pragma export off
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
 #endif
-#endif
+
 	switch ( command ) {
 	case GAME_INIT:
 		G_InitGame( arg0, arg1, arg2 );

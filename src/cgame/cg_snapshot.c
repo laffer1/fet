@@ -31,11 +31,13 @@
 // cg_snapshot.c -- things that happen on snapshot transition,
 // not necessarily every single rendered frame
 #include "cg_local.h"
+/*
 #if __MACOS__
 #ifdef GAMERANGER
 #include "GameRanger SDK/GameRanger.h"
 #endif
 #endif
+*/
 
 // rain - minor optimization - we only want to reset ents that were valid
 // in the last frame
@@ -245,6 +247,7 @@ CG_SetInitialSnapshot ( snapshot_t *snap )
 	}
 
 	// OSP
+	/*
 #if __MACOS__
 #ifdef GAMERANGER
 
@@ -252,6 +255,7 @@ CG_SetInitialSnapshot ( snapshot_t *snap )
 	GRSetMyTeamID( cg.snap->ps.persistant[PERS_TEAM] );
 #endif
 #endif
+	*/
 }
 
 
